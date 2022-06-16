@@ -24,3 +24,22 @@ composer require barryvdh/laravel-debugbar
 ```
 php artisan migrate
 ```
+
+## Create new Model (auto create: migration factory seeder)
+factory -create demo data
+```
+php artisan make:model Employee -mfs
+```
+```
+php artisan migrate
+```
+
+amend according:
+1. EmployeeFactory
+2. EmployeeSeeder
+3. Model
+4. DatabaseSeeder
+
+```
+php artisan migrate --seed
+```
