@@ -73,5 +73,5 @@ Kella notes:
 1. composer require laravel/ui
 2. php artisan ui react
 3. npm install
-4. npm run dev
+4. npm run dev //run twice
 5. php artisan ui:auth  //set auth pages
