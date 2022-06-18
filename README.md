@@ -55,3 +55,7 @@ web.php put route
 ```
 npm install --save react-toastify
 ```
+
+
+### Deploy to Heroku
+create Procfile - to tell heroku where to get the "index.php"
