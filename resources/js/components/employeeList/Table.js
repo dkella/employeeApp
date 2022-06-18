@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
+import TableRow from './TableRow';
+import CreateModal from './Modals/CreateModal';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export class Table extends Component {
 
@@ -9,17 +13,33 @@ export class Table extends Component {
   
     this.state = {
        employees:[],
-       
+
     }
   }
-  getEmployeeList = () =>{
 
+  //Life cycle method
+  componentDidMount(){
+    this.getEmployeeList();
+  }
+
+  getEmployeeList = () =>{
+    //continue axios here: 46:40
+    
+    let self=this;
+    axios.get('get/employee/list').then(function(response){
+      // console.log(response.data);
+      self.setState({
+        employees:response.data
+      })
+    });
   }
 
 
   render() {
     return (
       <div className="container">
+        <ToastContainer />
+        <CreateModal />
         <div className="row justify-content-center">
             <div className="col-md-8">
                 <div className="card">
@@ -33,23 +53,9 @@ export class Table extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colSpan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                {this.state.employees.map(function(x,i){
+                  return <TableRow key={i} data={x} />
+                })}
               </tbody>
 
               </table>

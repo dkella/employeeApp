@@ -43,3 +43,15 @@ amend according:
 ```
 php artisan migrate --seed
 ```
+
+##Create axios(reactjs) controller route 
+```
+php artisan make:controller EmployeesController
+```
+web.php put route
+
+
+### return status
+```
+npm install --save react-toastify
+```
